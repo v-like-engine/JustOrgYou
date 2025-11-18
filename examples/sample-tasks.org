@@ -1,0 +1,194 @@
+#+TITLE: Sample Tasks
+#+AUTHOR: JustOrgYou Team
+#+DATE: 2024-01-01
+
+* Welcome to JustOrgYou!
+
+This is a sample task file demonstrating the Org Mode format used by JustOrgYou.
+
+* TODO [#A] Review GTD methodology :work:learning:
+SCHEDULED: <2024-01-15 Mon>
+DEADLINE: <2024-01-20 Sat>
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440001
+:CONTEXT: office
+:EFFORT: 2:00
+:END:
+
+Read "Getting Things Done" by David Allen to better understand the workflow.
+
+This task demonstrates:
+- Priority marking [#A] for high priority
+- Multiple tags :work:learning:
+- Scheduled and deadline dates
+- Custom properties
+- Multi-line body text
+
+** TODO Read chapters 1-3
+** TODO Take notes
+** DONE Watch GTD intro video
+   CLOSED: [2024-01-10 Wed 14:30]
+
+* TODO Buy groceries :personal:errands:
+SCHEDULED: <2024-01-16 Tue>
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440002
+:END:
+
+Shopping list:
+- Milk
+- Bread
+- Eggs
+- Coffee
+
+* WAITING Feedback on project proposal :work:
+SCHEDULED: <2024-01-12 Fri>
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440003
+:WAITING-FOR: John Smith
+:END:
+
+Waiting for John to review and approve the Q1 project proposal.
+
+* SOMEDAY Learn to play guitar :personal:hobby:
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440004
+:END:
+
+Something I'd like to do eventually when I have more time.
+
+* TODO [#B] Update website homepage :work:website:
+DEADLINE: <2024-01-25 Thu>
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440005
+:CONTEXT: online
+:END:
+
+Redesign the homepage with new branding guidelines.
+
+Tasks:
+1. Review design mockups
+2. Update HTML/CSS
+3. Test on different devices
+4. Deploy to production
+
+* INBOX Quick note about meeting
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440006
+:END:
+
+Follow up on action items from yesterday's team meeting.
+
+This task is in INBOX - needs to be processed and categorized.
+
+* TODO [#A] Fix critical bug in production :work:urgent:bug:
+DEADLINE: <2024-01-14 Sun>
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440007
+:SEVERITY: critical
+:COMPONENT: authentication
+:END:
+
+Users are unable to login. Error: "Invalid token"
+
+Steps to reproduce:
+1. Navigate to login page
+2. Enter valid credentials
+3. Click "Login"
+4. Error appears
+
+** TODO Identify root cause
+** TODO Develop fix
+** TODO Test in staging
+** TODO Deploy to production
+
+* DONE Complete Q4 financial report :work:finance:
+CLOSED: [2024-01-08 Mon 16:45]
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440008
+:END:
+
+Finished and submitted to accounting department.
+
+* TODO Call dentist for appointment :personal:health:phone:
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440009
+:PHONE: 555-0123
+:END:
+
+Schedule annual checkup and cleaning.
+
+* TODO [#C] Organize photo library :personal:computer:
+SOMEDAY:
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440010
+:END:
+
+Sort through and organize all photos from the past year.
+Low priority but would be nice to have done.
+
+* Project: Home Renovation :personal:project:
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440011
+:END:
+
+Planning for kitchen renovation project.
+
+** TODO Get quotes from contractors
+   SCHEDULED: <2024-01-20 Sat>
+
+** WAITING Permit approval from city
+   :PROPERTIES:
+   :WAITING-FOR: City Planning Department
+   :END:
+
+** TODO Choose tile and countertop materials
+   SCHEDULED: <2024-02-01 Thu>
+
+** SOMEDAY Consider adding island
+
+* INBOX Research vacation destinations
+
+Need to plan summer vacation. Look into:
+- Beach resorts
+- Mountain cabins
+- City tours in Europe
+
+* TODO Prepare presentation for conference :work:speaking:
+SCHEDULED: <2024-01-22 Mon>
+DEADLINE: <2024-01-30 Tue>
+:PROPERTIES:
+:ID: 550e8400-e29b-41d4-a716-446655440012
+:EVENT: Tech Conference 2024
+:END:
+
+Topic: "Building Scalable Task Management Systems"
+
+** TODO Outline key points
+** TODO Create slides
+** TODO Practice delivery
+** TODO Prepare demo
+
+* Notes Section
+
+You can also use Org Mode for notes and reference materials!
+
+** Meeting Notes 2024-01-10
+   :PROPERTIES:
+   :MEETING_DATE: 2024-01-10
+   :ATTENDEES: Alice, Bob, Charlie
+   :END:
+
+   - Discussed Q1 goals
+   - Assigned action items
+   - Next meeting: 2024-01-17
+
+** Reference: GTD Categories
+
+   | Category | Purpose                           |
+   |----------+-----------------------------------|
+   | INBOX    | Unprocessed items                 |
+   | TODO     | Next actions                      |
+   | WAITING  | Delegated or blocked              |
+   | SOMEDAY  | Maybe later                       |
+   | DONE     | Completed                         |

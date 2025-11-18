@@ -1,0 +1,86 @@
+name: Rust Library CI
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'todo-lib/**'
+      - '.github/workflows/rust-ci.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'todo-lib/**'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        override: true
+        components: rustfmt, clippy
+
+    - name: Cache cargo registry
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/registry
+        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Cache cargo index
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/git
+        key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Cache cargo build
+      uses: actions/cache@v3
+      with:
+        path: todo-lib/target
+        key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Run tests
+      working-directory: ./todo-lib
+      run: cargo test --verbose
+
+    - name: Run clippy
+      working-directory: ./todo-lib
+      run: cargo clippy -- -D warnings
+
+    - name: Check formatting
+      working-directory: ./todo-lib
+      run: cargo fmt -- --check
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        override: true
+
+    - name: Build
+      working-directory: ./todo-lib
+      run: cargo build --release --verbose
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: todo-lib
+        path: todo-lib/target/release/
