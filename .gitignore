@@ -4,14 +4,11 @@ __pycache__/
 *$py.class
 *.so
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
 parts/
 sdist/
 var/
@@ -23,6 +20,11 @@ venv/
 ENV/
 env/
 .venv
+# Python lib directories (but not Flutter lib)
+backend/lib/
+backend/lib64/
+todo-lib/target/debug/
+todo-lib/target/release/
 
 # Rust
 target/
@@ -37,7 +39,7 @@ Cargo.lock
 .packages
 .pub-cache/
 .pub/
-build/
+frontend/build/
 *.g.dart
 *.freezed.dart
 
@@ -85,7 +87,8 @@ data/
 *.pth
 *.h5
 *.pb
-models/
+backend/models/
+*.pkl
 
 # Temporary files
 *.tmp
