@@ -9,12 +9,17 @@ JustOrgYou is a comprehensive task management application designed to solve the 
 ## Key Features
 
 - **Future-Proof**: Plain text storage using Org Mode format
-- **AI-Powered**: Semantic search, auto-categorization, tag suggestions, and duplicate detection
+- **AI-Powered**:
+  - **Predictive Categorization**: Learns from your patterns and auto-sorts inbox (80%+ confidence)
+  - **Semantic Search**: Find tasks by meaning - "buy bread" finds "Visit supermarket for milk and loaf"
+  - **Tag Suggestions**: Intelligent tag recommendations based on content
+  - **Duplicate Detection**: Automatically identifies similar tasks
 - **Cross-Platform**: Flutter apps for mobile and desktop, Rust CLI
 - **Offline-First**: Full functionality without internet connection
 - **Smart Merging**: Intelligent conflict resolution for multi-device sync
 - **Fast & Responsive**: Rust core library for optimal performance
 - **Privacy-Focused**: Local-first with optional cloud sync
+- **Continuous Learning**: AI improves as you use the app
 
 ## Architecture
 
@@ -43,11 +48,13 @@ JustOrgYou consists of four main components:
    - File: `backend/`
 
 4. **AI/ML Services (Python)**
-   - Semantic search using sentence transformers
-   - Auto-categorization
-   - Tag suggestions
-   - Duplicate detection
-   - File: `backend/app/services/ml.py`
+   - **User Pattern Learning**: Learns where you categorize tasks from inbox
+   - **Predictive Categorization**: Auto-sorts with confidence scores (80%+ threshold)
+   - **Semantic Search**: Cross-directory search by meaning using embeddings
+   - **Tag Suggestions**: Context-aware tag recommendations
+   - **Duplicate Detection**: Finds similar tasks to prevent redundancy
+   - **Continuous Training**: Models improve with every user action
+   - Files: `backend/app/services/ml.py`, `backend/app/services/user_learning.py`
 
 ## Tech Stack
 
@@ -172,10 +179,20 @@ Once the backend is running, visit:
 
 ### Key Endpoints
 
+**AI Features:**
 - `POST /api/v1/ai/search/semantic` - Semantic task search
 - `POST /api/v1/ai/tags/suggest` - Get tag suggestions
 - `POST /api/v1/ai/categorize` - Auto-categorize tasks
 - `POST /api/v1/ai/duplicates/detect` - Find duplicate tasks
+
+**User Learning (NEW):**
+- `POST /api/v1/learning/learn` - Record user categorization action
+- `POST /api/v1/learning/predict` - Predict category for single task
+- `POST /api/v1/learning/categorize/batch` - Smart inbox sorting (80%+ auto, <80% suggest)
+- `GET /api/v1/learning/stats` - View learning statistics
+
+**Semantic Search (Enhanced):**
+- `POST /api/v1/search/semantic` - Search across ALL directories by meaning
 
 ## Data Format
 

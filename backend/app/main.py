@@ -6,7 +6,7 @@ import logging
 from typing import AsyncGenerator
 
 from app.config import settings
-from app.api import ai_router, health_router
+from app.api import ai_router, health_router, learning_router, search_router
 from app.database import connect_db, close_db
 
 # Configure logging
@@ -53,6 +53,8 @@ app.add_middleware(
 # Include routers
 app.include_router(health_router, prefix="/api/v1", tags=["health"])
 app.include_router(ai_router, prefix="/api/v1/ai", tags=["ai"])
+app.include_router(learning_router, prefix="/api/v1/learning", tags=["learning"])
+app.include_router(search_router, prefix="/api/v1/search", tags=["search"])
 
 
 # Global exception handler
