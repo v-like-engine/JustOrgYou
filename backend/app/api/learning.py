@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Header
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 import logging
+import os
 
 from app.services.user_learning import get_learner
 
@@ -74,11 +75,6 @@ class LearningStatsResponse(BaseModel):
     is_trained: bool
     categories: Dict[str, int]
     model_updated_at: Optional[str]
-
-
-def get_user_id(x_user_id: str = Header(...)) -> str:
-    """Extract user ID from header."""
-    return x_user_id
 
 
 @router.post("/learn", status_code=201)
@@ -236,17 +232,8 @@ async def reset_learning(
     try:
         learner = get_learner(user_id)
 
-        # Clear training data
-        learner.training_data = []
-        learner.classifier = None
-        learner.label_encoder = None
-
-        # Delete model files
-        import os
-        if os.path.exists(learner.model_path):
-            os.remove(learner.model_path)
-        if os.path.exists(learner.encoder_path):
-            os.remove(learner.encoder_path)
+        # Reset using learner's method
+        learner.reset()
 
         return {"message": "Learning model reset successfully"}
 

@@ -5,7 +5,7 @@ Provides AI-powered features like semantic search, tag suggestion,
 auto-categorization, and duplicate detection.
 """
 
-from typing import List, Dict, Tuple, Any
+from typing import List, Dict, Tuple, Any, Optional
 import numpy as np
 from sentence_transformers import SentenceTransformer
 import logging
@@ -16,7 +16,7 @@ from app.config import settings
 logger = logging.getLogger(__name__)
 
 # Global model instance (lazy loaded)
-_model: SentenceTransformer = None
+_model: Optional[SentenceTransformer] = None
 
 
 def get_model() -> SentenceTransformer:

@@ -317,6 +317,23 @@ class UserPatternLearner:
             'model_updated_at': self.training_data[-1]['timestamp'] if self.training_data else None
         }
 
+    def reset(self):
+        """Reset the learning model for this user."""
+        # Clear training data
+        self.training_data = []
+        self.classifier = None
+        self.label_encoder = None
+
+        # Delete model files
+        try:
+            if os.path.exists(self.model_path):
+                os.remove(self.model_path)
+            if os.path.exists(self.encoder_path):
+                os.remove(self.encoder_path)
+            logger.info(f"Reset model for user {self.user_id}")
+        except Exception as e:
+            logger.error(f"Error deleting model files for user {self.user_id}: {e}")
+
 
 # Global cache of learners per user
 _learner_cache: Dict[str, UserPatternLearner] = {}
